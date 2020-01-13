@@ -1,0 +1,8 @@
+-e .
+-r piptools.txt
+
+pytest
+pylint
+isort
+black
+mypy
