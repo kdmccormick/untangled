@@ -133,3 +133,6 @@ dev_requirements.tmp
 
 # Common virtualenv locations
 .venv*/
+
+# Test data
+test-data/

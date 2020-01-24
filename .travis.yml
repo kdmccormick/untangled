@@ -7,5 +7,6 @@ cache: pip
 install:
     - pip install -U pip wheel
     - make requirements
+    - make provision-tests
 script:
     - make validate

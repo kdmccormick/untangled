@@ -28,7 +28,7 @@ isort:
 black:
 	black  $(PYTHON_CODE)
 
-format: isort black
+format_hard: isort black
 
 check_isort:
 	isort --recursive --check-only $(PYTHON_CODE)
@@ -36,18 +36,27 @@ check_isort:
 check_black:
 	black --check $(PYTHON_CODE)
 
-check_format: check_isort check_black
+format: check_isort check_black
 
 pylint:
 	pylint *.py untangled
 
 mypy:
-	mypy --check untangled
+	mypy --check --package untangled
 
 quality: pylint mypy
 
 test:
 	pytest untangled
 
-validate: check_format quality test
+validate: format quality test
 	echo '>>>>> Validation complete :) <<<<<'
+
+validate_hard: format_hard quality test
+	echo '>>>>> Validation complete :) <<<<<'
+
+provision-tests:
+	./provision-tests.sh
+
+clean:
+	rm -rf test-data/
