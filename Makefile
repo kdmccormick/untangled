@@ -1,5 +1,7 @@
 
-.PHONY: piptools upgrade-piptools requirements upgrade-requirements upgrade
+.PHONY: black check_black check_format check_isort format isort mypy piptools \
+        pylint quality requirements test upgrade upgrade upgrade-piptools \
+        upgrade-requirements validate
 
 piptools:
 	pip install -r piptools.txt
@@ -34,7 +36,7 @@ check_isort:
 check_black:
 	black --check $(PYTHON_CODE)
 
-check_format:  check_isort check_black
+check_format: check_isort check_black
 
 pylint:
 	pylint *.py untangled
